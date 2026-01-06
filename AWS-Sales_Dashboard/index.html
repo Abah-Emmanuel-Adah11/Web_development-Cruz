@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <h1>Sales Dashboard</h1>
+            </div>
+            <div class="date-display">
+                <i class="far fa-calendar-alt"></i>
+                <span id="current-date">Loading...</span>
+            </div>
+        </header>
+
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="quarter"><i class="fas fa-calendar-quarter"></i> Quarter</label>
+                <select id="quarter" class="dropdown">
+                    <option value="Q1">Q1</option>
+                    <option value="Q2" selected>Q2</option>
+                    <option value="Q3">Q3</option>
+                    <option value="Q4">Q4</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="year"><i class="fas fa-calendar"></i> Year</label>
+                <select id="year" class="dropdown">
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018" selected>2018</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="region"><i class="fas fa-globe"></i> Region</label>
+                <select id="region" class="dropdown">
+                    <option value="United States" selected>United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Germany">Germany</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-card total">
+                <div class="stat-header">
+                    <h3 class="stat-title">Total Quantity</h3>
+                    <div class="stat-icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="total-quantity">1,850</div>
+                <div class="stat-change">
+                    <span class="positive"><i class="fas fa-arrow-up"></i> 12.5%</span> from last quarter
+                </div>
+            </div>
+            
+            <div class="stat-card average">
+                <div class="stat-header">
+                    <h3 class="stat-title">Average Quantity</h3>
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="average-quantity">24.3</div>
+                <div class="stat-change">
+                    <span class="positive"><i class="fas fa-arrow-up"></i> 3.2%</span> from last quarter
+                </div>
+            </div>
+            
+            <div class="stat-card transactions">
+                <div class="stat-header">
+                    <h3 class="stat-title">No. of Transactions</h3>
+                    <div class="stat-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                </div>
+                <div class="stat-value" id="total-transactions">76</div>
+                <div class="stat-change">
+                    <span class="positive"><i class="fas fa-arrow-up"></i> 8.7%</span> from last quarter
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <h2 class="charts-title">
+                <i class="fas fa-chart-pie"></i> Sales Analytics
+            </h2>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3 class="chart-title">Sales by Category</h3>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3 class="chart-title">Monthly Sales Trend</h3>
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3 class="chart-title">Regional Performance</h3>
+                    <canvas id="regionalChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <button class="update-btn" id="update-btn">
+            <i class="fas fa-sync-alt"></i> Update Dashboard
+        </button>
+
+        <footer>
+            <p>Sales Dashboard &copy; 2023 | Data refreshed on <span id="refresh-date">Today</span></p>
+            <p>Filtered by: <span id="filter-info">Q2 2018, United States</span></p>
+        </footer>
+    </div>
+
+    <script src="index.js" charset="UTF-8"></script>
+</body>
+</html>
